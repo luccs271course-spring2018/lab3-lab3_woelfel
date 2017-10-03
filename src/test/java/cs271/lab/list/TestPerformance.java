@@ -32,7 +32,7 @@ public class TestPerformance {
       arrayList.add(i);
       linkedList.add(i);
     }
-  }
+  } 
 
   @After
   public void tearDown() throws Exception {
