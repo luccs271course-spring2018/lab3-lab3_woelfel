@@ -3,14 +3,15 @@ package cs271.lab.list;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+/* import java.util.*;
 
 public class TestIterator {
 
@@ -20,7 +21,10 @@ public class TestIterator {
   @Before
   public void setUp() throws Exception {
     list = new ArrayList<Integer>();
+    /* list = new LinkedList<Integer>(); */
     // TODO also try with a LinkedList - does it make any difference?
+    /* Does not make a difference */
+    
   }
 
   @After
@@ -47,18 +51,19 @@ public class TestIterator {
     assertTrue(i.hasNext());
     assertEquals(33, i.next().intValue());
     // TODO fix the expected values in the assertions below
+    /* Done */
     assertTrue(i.hasNext());
-    assertEquals(0, i.next().intValue());
+    assertEquals(77, i.next().intValue());
     assertTrue(i.hasNext());
-    assertEquals(0, i.next().intValue());
+    assertEquals(44, i.next().intValue());
     assertTrue(i.hasNext());
-    assertEquals(0, i.next().intValue());
+    assertEquals(77, i.next().intValue());
     assertTrue(i.hasNext());
-    assertEquals(0, i.next().intValue());
+    assertEquals(55, i.next().intValue());
     assertTrue(i.hasNext());
-    assertEquals(0, i.next().intValue());
+    assertEquals(77, i.next().intValue());
     assertTrue(i.hasNext());
-    assertEquals(0, i.next().intValue());
+    assertEquals(66, i.next().intValue());
     assertFalse(i.hasNext());
   }
 
@@ -74,13 +79,14 @@ public class TestIterator {
     final Iterator<Integer> i = list.iterator();
     while (i.hasNext()) {
       if (i.next() == 77) {
-        i.remove(); // TODO what happens if you use list.remove(Integer.valueOf(77))?
+        i.remove(); // TODO what happens if you use list.remove(Integer.valueOf(77))? /* It will throw an exception */
       }
     }
+    assertEquals(Arrays.asList(33, 44, 55, 66), list);
     // TODO using assertEquals and Arrays.asList, express which values are left in the list
     // See TestList.java for examples of how to use Arrays.asList; also see the Java Arrays
     // class for more information
-    fail("Not yet implemented"); // remove this line when done
+
   }
 
   @Test
@@ -94,6 +100,12 @@ public class TestIterator {
     list.add(66);
     double sum = 0;
     int n = 0;
+     
+    final Iterator<Integer> i = list.iterator();
+    while (i.hasNext()) {
+      sum = sum + i.next();
+      n = n + 1;
+    }
     // TODO use an iterator and a while loop to compute the average (mean) of the values
     // (defined as the sum of the items divided by the number of items)
     // testNonempty shows how to use an iterator; use i.hasNext() in the while loop condition
