@@ -1,0 +1,21 @@
+1) TODO also try with a LinkedList - does it make any difference?
+
+The linked list won't make a difference in how the program will run.
+
+2) list.remove(5); // what does this method do?
+
+Removes the value occupying the 5th spot in the list. The 6th value in the overall size would become the 5th value.
+
+3) TODO what happens if you use list.remove(77)?
+
+Would cause an error because there isn't a 77 position in the list. 
+
+4) which of the two lists performs better as the size increases?
+
+An Array List is more efficient for larger collections than Linked List.
+
+5) list.remove(Integer.valueOf(5)); // what does this one do?
+
+It removes the Int 5 from the list.
+
+
