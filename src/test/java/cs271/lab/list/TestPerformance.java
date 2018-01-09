@@ -12,17 +12,28 @@ public class TestPerformance {
   // TODO run test and record running times for SIZE = 10, 100, 1000, 10000, ...
   // (choose in conjunction with REPS below up to an upper limit where the clock
   // running time is in the tens of seconds)
-  // TODO (optional) refactor to DRY
   // which of the two lists performs better as the size increases?
-  private final int SIZE = 10;
+  private final int SIZE = 100000;
 
   // TODO choose this value in such a way that you can observe an actual effect
-  // for increasing problem sizes
-  private final int REPS = 1000000;
+  private final int REPS = 1000000000;
 
   private List<Integer> arrayList;
-
   private List<Integer> linkedList;
+
+  public void listAddRemove(List<Integer> list){
+    for (int r = 0; r < REPS; r++) {
+      list.add(0, 77);
+      list.remove(0);
+    }
+  }
+
+  public void listAccess(List<Integer> list){
+    long sum = 0;
+    for (int r = 0; r < REPS; r++) {
+      sum += list.get(r % SIZE);
+    }
+  }
 
   @Before
   public void setUp() throws Exception {
@@ -32,7 +43,7 @@ public class TestPerformance {
       arrayList.add(i);
       linkedList.add(i);
     }
-  } 
+  }
 
   @After
   public void tearDown() throws Exception {
@@ -42,33 +53,21 @@ public class TestPerformance {
 
   @Test
   public void testLinkedListAddRemove() {
-    for (int r = 0; r < REPS; r++) {
-      linkedList.add(0, 77);
-      linkedList.remove(0);
-    }
+    listAddRemove(linkedList);
   }
 
   @Test
   public void testArrayListAddRemove() {
-    for (int r = 0; r < REPS; r++) {
-      arrayList.add(0, 77);
-      arrayList.remove(0);
-    }
+    listAddRemove(arrayList);
   }
 
   @Test
   public void testLinkedListAccess() {
-    long sum = 0;
-    for (int r = 0; r < REPS; r++) {
-      sum += linkedList.get(r % SIZE);
-    }
+    listAccess(linkedList);
   }
 
   @Test
   public void testArrayListAccess() {
-    long sum = 0;
-    for (int r = 0; r < REPS; r++) {
-      sum += arrayList.get(r % SIZE);
-    }
+    listAccess(arrayList);
   }
 }
